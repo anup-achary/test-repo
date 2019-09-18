@@ -6,7 +6,7 @@ out = subprocess.Popen(['hadoop', 'fs','-ls','/hdfs/path'],
 stdout,stderr = out.communicate()
 s = stdout.decode()
 print(s)
-#print(type(s))
+print(type(s))
 print('changes1')
 #changes made
 # test-repo
