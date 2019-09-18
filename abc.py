@@ -6,4 +6,5 @@ out = subprocess.Popen(['hadoop', 'fs','-ls','/hdfs/path'],
 stdout,stderr = out.communicate()
 s = stdout.decode()
 print(s)
+print(type(s))
 # test-repo
