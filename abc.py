@@ -7,4 +7,5 @@ stdout,stderr = out.communicate()
 s = stdout.decode()
 print(s)
 print(type(s))
+print('changes')
 # test-repo
