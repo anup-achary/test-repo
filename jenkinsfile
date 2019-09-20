@@ -1,0 +1,47 @@
+#!groovy
+pipeline{
+    agent{
+        stages{
+            stage('One'){
+                steps{
+                    echo 'stage one'
+                }
+            }
+            stage('Two'){
+                steps{
+                    input('stage two')
+                }
+            }
+            stage('three'){
+                steps{
+                    when {
+                       not {
+                            branch "master"
+                       }
+                 }
+                 steps {
+                       echo "Hello"
+                 }
+                 }
+            stage('Four') {
+            parallel { 
+                    stage('Unit Test') {
+                    steps {
+                            echo "Running the unit test..."
+                        }
+                    }
+                    stage('Integration test') {
+                        agent {
+                            docker {
+                                    reuseNode true
+                                    image 'ubuntu'
+                           }
+                        }
+                        steps {
+                            echo "Running the integration test..."
+                       }
+                    }  
+            }
+        }
+    }
+}
